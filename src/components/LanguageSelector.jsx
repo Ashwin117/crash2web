@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { LANGUAGE_VERSIONS } from "../constants";
 
-const languages = Object.entries(LANGUAGE_VERSIONS);
+const languages = LANGUAGE_VERSIONS;
 const ACTIVE_COLOR = "blue.400";
 
 const LanguageSelector = ({ language, onSelect }) => {
@@ -21,7 +21,7 @@ const LanguageSelector = ({ language, onSelect }) => {
       <Menu isLazy>
         <MenuButton as={Button}>{language}</MenuButton>
         <MenuList bg="#110c1b">
-          {languages.map(([lang, version]) => (
+          {languages.map((lang) => (
             <MenuItem
               key={lang}
               color={lang === language ? ACTIVE_COLOR : ""}
@@ -34,9 +34,6 @@ const LanguageSelector = ({ language, onSelect }) => {
             >
               {lang}
               &nbsp;
-              <Text as="span" color="gray.600" fontSize="sm">
-                ({version})
-              </Text>
             </MenuItem>
           ))}
         </MenuList>

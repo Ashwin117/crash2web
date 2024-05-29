@@ -1,19 +1,15 @@
 import axios from "axios";
-import { LANGUAGE_VERSIONS } from "./constants";
+import uniqid from 'uniqid';
 
 const API = axios.create({
-  baseURL: "https://emkc.org/api/v2/piston",
+  baseURL: "http://localhost:3000",
 });
 
 export const executeCode = async (language, sourceCode) => {
-  const response = await API.post("/execute", {
-    language: language,
-    version: LANGUAGE_VERSIONS[language],
-    files: [
-      {
-        content: sourceCode,
-      },
-    ],
+  const response = await API.post("/submit", {
+    "language": language,
+    "user_code": sourceCode,
+    "problem_id": uniqid(),
   });
   return response.data;
 };

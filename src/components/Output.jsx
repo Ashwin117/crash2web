@@ -13,11 +13,12 @@ const Output = ({ editorRef, language }) => {
     if (!sourceCode) return;
     try {
       setIsLoading(true);
-      const { run: result } = await executeCode(language, sourceCode);
-      setOutput(result.output.split("\n"));
-      result.stderr ? setIsError(true) : setIsError(false);
+      const result = await executeCode(language, sourceCode);
+      setOutput(result.split("\n"));
+      setIsError(false);
     } catch (error) {
       console.log(error);
+      setIsError(true);
       toast({
         title: "An error occurred.",
         description: error.message || "Unable to run code",
