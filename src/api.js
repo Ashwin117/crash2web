@@ -6,7 +6,7 @@ const API = axios.create({
 });
 
 export const executeCode = async (language, sourceCode) => {
-  const response = await API.post("/submit", {
+  const response = await API.post("/compile", {
     "language": language,
     "user_code": sourceCode,
     "problem_id": uniqid(),
