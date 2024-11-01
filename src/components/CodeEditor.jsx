@@ -33,7 +33,7 @@ const CodeEditor = () => {
     <Box bg="black" p={4} minH="100vh" color="white">
       <HStack spacing={4} align="start">
         {/* Language Selector and Editor */}
-        <Box w="50%" bg="gray.900" p={4} borderRadius="md">
+        <Box w="50%" bg="#1E1E1E" p={4} borderRadius="md" >
           <LanguageSelector language={language} onSelect={onSelect} />
           <Editor
             options={{
@@ -42,6 +42,7 @@ const CodeEditor = () => {
               minimap: { enabled: false },
               wordWrap: "on",
               lineNumbers: "on",
+              padding: 4,
             }}
             height="75vh"
             theme="vs-dark"
