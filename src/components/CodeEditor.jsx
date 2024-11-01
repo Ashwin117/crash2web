@@ -1,5 +1,5 @@
-import { React, useRef, useState } from "react";
-import { Box, HStack } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
+import { Box } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
@@ -9,6 +9,7 @@ const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState(COMMENTS[TEXT]);
   const [language, setLanguage] = useState(TEXT);
+  const [editorWidth, setEditorWidth] = useState(50); // Initial width percentage for the editor
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -20,34 +21,67 @@ const CodeEditor = () => {
     setValue(COMMENTS[language] || "");
   };
 
-  return (
-    <Box bg="black" p={4} minH="100vh" color="white">
-      <HStack spacing={4} align="start">
-        {/* Language Selector and Editor */}
-        <Box w="50%" bg="#1E1E1E" p={4} borderRadius="md">
-          <LanguageSelector language={language} onSelect={onSelect} />
-          <Editor
-            options={{
-              fontFamily: "Fira Code, monospace", // Use your preferred font here
-              fontSize: 14,                       // Adjust font size if needed
-              minimap: { enabled: false },        // Optional: disable minimap if it distracts
-              wordWrap: "on",
-              suggestFontFamily: "Fira Code, monospace", // Sets font for suggestions
-            }}
-            height="75vh"
-            theme="vs-dark"
-            language={language}
-            value={value}
-            onMount={onMount}
-            onChange={(value) => setValue(value)}
-          />
-        </Box>
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
 
-        {/* Output Section */}
-        <Box w="50%" bg="gray.900" p={4} borderRadius="md">
-          <Output editorRef={editorRef} language={language} />
-        </Box>
-      </HStack>
+  const handleMouseMove = (e) => {
+    const newEditorWidth = (e.clientX / window.innerWidth) * 100;
+    setEditorWidth(newEditorWidth);
+  };
+
+  const handleMouseUp = () => {
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
+  };
+
+  return (
+    <Box bg="black" p={4} minH="100vh" color="white" display="flex">
+      {/* Left Pane - Language Selector and Editor */}
+      <Box
+        width={`${editorWidth}%`}
+        bg="#1E1E1E"
+        p={4}
+        borderRadius="md"
+        display="flex"
+        flexDirection="column"
+      >
+        <LanguageSelector language={language} onSelect={onSelect} />
+        <Editor
+          options={{
+            fontFamily: "Fira Code, monospace",
+            fontSize: 14,
+            minimap: { enabled: false },
+            wordWrap: "on",
+            suggestFontFamily: "Fira Code, monospace",
+          }}
+          height="75vh"
+          theme="vs-dark"
+          language={language}
+          value={value}
+          onMount={onMount}
+          onChange={(value) => setValue(value)}
+        />
+      </Box>
+
+      {/* Divider */}
+      <Box
+        width="10px"
+        cursor="col-resize"
+        bg="gray.700"
+        onMouseDown={handleMouseDown}
+        zIndex="1"
+        position="relative"
+        transition="background-color 0.2s"
+        _hover={{ bg: "gray.500" }} // Changes color on hover
+      />
+
+      {/* Right Pane - Output Section */}
+      <Box width={`${100 - editorWidth}%`} bg="gray.900" p={4} borderRadius="md" overflowY="auto">
+        <Output editorRef={editorRef} language={language} />
+      </Box>
     </Box>
   );
 };
