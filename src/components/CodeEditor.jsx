@@ -3,12 +3,12 @@ import { Box, HStack } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
-import { COMMENTS } from "../constants";
+import { COMMENTS, TEXT } from "../constants";
 
 const CodeEditor = () => {
   const editorRef = useRef();
-  const [value, setValue] = useState(COMMENTS["javascript"]);
-  const [language, setLanguage] = useState("javascript");
+  const [value, setValue] = useState(COMMENTS[TEXT]);
+  const [language, setLanguage] = useState(TEXT);
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -28,12 +28,11 @@ const CodeEditor = () => {
           <LanguageSelector language={language} onSelect={onSelect} />
           <Editor
             options={{
-              fontFamily: "JetBrains Mono, monospace",
-              fontSize: 14,
-              minimap: { enabled: false },
+              fontFamily: "Fira Code, monospace", // Use your preferred font here
+              fontSize: 14,                       // Adjust font size if needed
+              minimap: { enabled: false },        // Optional: disable minimap if it distracts
               wordWrap: "on",
-              lineNumbers: "on",
-              padding: 4,
+              suggestFontFamily: "Fira Code, monospace", // Sets font for suggestions
             }}
             height="75vh"
             theme="vs-dark"

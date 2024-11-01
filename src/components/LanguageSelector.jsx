@@ -24,7 +24,7 @@ const LanguageSelector = ({ language, onSelect }) => {
         <MenuButton as={Button}>
           <Text fontSize="md">{language}</Text>
         </MenuButton>
-        <MenuList bg="#110c1b">
+        <MenuList bg="#1E1E1E">
           {languages.map((lang) => (
             <MenuItem
               key={lang}

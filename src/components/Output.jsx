@@ -12,6 +12,7 @@ import { FaMicrophone, FaStop } from "react-icons/fa";
 import { executeCode, saveRecording } from "../api";
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
+import { TEXT } from "../constants";
 
 const Output = ({ editorRef, language }) => {
   const toast = useToast();
@@ -159,6 +160,7 @@ const Output = ({ editorRef, language }) => {
           isLoading={isLoading}
           fontSize="sm"
           onClick={runCode}
+          isDisabled={language === TEXT}
         >
           Run Code
         </Button>
