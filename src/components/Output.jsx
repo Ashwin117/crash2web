@@ -31,8 +31,8 @@ const Output = ({ editorRef, language }) => {
   };
 
   return (
-    <Box w="50%">
-      <Text mb={2} fontSize="lg">
+    <Box w="90%">
+      <Text mb={2} fontSize="md">
         Output
       </Text>
       <Button
@@ -40,6 +40,7 @@ const Output = ({ editorRef, language }) => {
         colorScheme="green"
         mb={4}
         isLoading={isLoading}
+        fontSize="md"
         onClick={runCode}
       >
         Run Code
@@ -54,7 +55,7 @@ const Output = ({ editorRef, language }) => {
       >
         {output
           ? output.map((line, i) => <Text key={i}>{line}</Text>)
-          : 'Click "Run Code" to see the output here'}
+          : <Text fontSize="md">Click "Run Code" to see the output here</Text>}
       </Box>
     </Box>
   );
