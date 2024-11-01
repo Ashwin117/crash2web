@@ -50,14 +50,6 @@ const CodeEditor = () => {
             onMount={onMount}
             onChange={(value) => setValue(value)}
           />
-          <Button
-            mt={4}
-            onClick={handleRunCode}
-            colorScheme="teal"
-            isDisabled={loading}
-          >
-            Run Code
-          </Button>
         </Box>
 
         {/* Output Section */}

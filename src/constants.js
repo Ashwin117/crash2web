@@ -16,23 +16,26 @@ export const LANGUAGE_VERSIONS = [
 
 export const COMMENTS = {
   // JavaScript Hello World in comments
-  [JAVASCRIPT]: `// function greet() {
+  [JAVASCRIPT]: `// Welcome to the code editor!\n// function greet() {
 //  console.log("Hello, world!");
 // }
 // greet();`,
+
   // GoLang Hello World in comments
-  [GOLANG]: `// func greet() {
+  [GOLANG]: `// Welcome to the code editor!\n// func greet() {
 //  fmt.Println("Hello world!")
 // }
 // func main() {
 //  greet()
 // }`,
+
   // Python Hello World in comments
-  [PYTHON]: `# def greet():
+  [PYTHON]: `# Welcome to the code editor!\n# def greet():
 #  print("Hello world!")
 # greet()`,
+
   // Java 11 Hello World in comments
-  [JAVA11]: `/* 
+  [JAVA11]: `/* Welcome to the code editor!
 public class Main {
     public static void main(String[] args) {
         greet();
@@ -43,13 +46,15 @@ public class Main {
     }
 }
 */`,
+
   // Ruby Hello World in comments
-  [RUBY]: `# def greet
+  [RUBY]: `# Welcome to the code editor!\n# def greet
 #   puts "Hello, world!"
 # end
 # greet`,
+
   // C++ Hello World in comments
-  [CPP]: `// #include <iostream>
+  [CPP]: `// Welcome to the code editor!\n// #include <iostream>
 // using namespace std;
 //
 // void greet() {
@@ -61,3 +66,4 @@ public class Main {
 //     return 0;
 // }`,
 };
+

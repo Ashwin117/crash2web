@@ -157,7 +157,7 @@ const Output = ({ editorRef, language }) => {
           variant="outline"
           colorScheme="green"
           isLoading={isLoading}
-          fontSize="md"
+          fontSize="sm"
           onClick={runCode}
         >
           Run Code
@@ -173,15 +173,17 @@ const Output = ({ editorRef, language }) => {
       <Box
         height="75vh"
         p={2}
+        overflowY="auto"     // Enable vertical scrolling
         color={isError ? "red.400" : ""}
         border="1px solid"
         borderRadius={4}
+        fontSize="sm"
         borderColor={isError ? "red.500" : "#333"}
       >
         {output ? (
           output.map((line, i) => <Text key={i}>{line}</Text>)
         ) : (
-          <Text fontSize="md">Click Run Code to see the output here</Text>
+          <Text fontSize="sm">Click Run Code to see the output here</Text>
         )}
       </Box>
     </Box>
