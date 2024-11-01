@@ -173,7 +173,7 @@ const Output = ({ editorRef, language }) => {
       <Box
         height="75vh"
         p={2}
-        overflowY="auto"     // Enable vertical scrolling
+        overflowY="auto" // Enable vertical scrolling
         color={isError ? "red.400" : ""}
         border="1px solid"
         borderRadius={4}
