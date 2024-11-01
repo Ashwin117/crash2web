@@ -14,11 +14,6 @@ import PropTypes from "prop-types";
 const languages = LANGUAGE_VERSIONS;
 const ACTIVE_COLOR = "blue.400";
 
-LanguageSelector.propTypes = {
-  language: PropTypes.string.isRequired,
-  onSelect: PropTypes.func.isRequired,
-};
-
 const LanguageSelector = ({ language, onSelect }) => {
   return (
     <Box ml={2} mb={4}>
@@ -50,4 +45,10 @@ const LanguageSelector = ({ language, onSelect }) => {
     </Box>
   );
 };
+
+LanguageSelector.propTypes = {
+  language: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
+
 export default LanguageSelector;

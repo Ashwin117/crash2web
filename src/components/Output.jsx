@@ -13,13 +13,6 @@ import { executeCode, saveRecording } from "../api";
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 
-Output.propTypes = {
-  language: PropTypes.string.isRequired, // Specify language as a required string
-  editorRef: PropTypes.shape({
-    current: PropTypes.object, // Define current as an object for ref compatibility
-  }).isRequired,
-};
-
 const Output = ({ editorRef, language }) => {
   const toast = useToast();
   const [output, setOutput] = useState(null);
@@ -193,6 +186,13 @@ const Output = ({ editorRef, language }) => {
       </Box>
     </Box>
   );
+};
+
+Output.propTypes = {
+  language: PropTypes.string.isRequired, // Specify language as a required string
+  editorRef: PropTypes.shape({
+    current: PropTypes.object, // Define current as an object for ref compatibility
+  }).isRequired,
 };
 
 export default Output;
