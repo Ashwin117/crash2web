@@ -5,27 +5,34 @@ export const JAVA11 = "java11";
 export const RUBY = "ruby";
 export const CPP = "c++";
 
-export const LANGUAGE_VERSIONS = [JAVASCRIPT, GOLANG, PYTHON, JAVA11, RUBY, CPP];
+export const LANGUAGE_VERSIONS = [
+  JAVASCRIPT,
+  GOLANG,
+  PYTHON,
+  JAVA11,
+  RUBY,
+  CPP,
+];
 
 export const COMMENTS = {
-	// JavaScript Hello World in comments
-    [JAVASCRIPT]: `// function greet() {
+  // JavaScript Hello World in comments
+  [JAVASCRIPT]: `// function greet() {
 //  console.log("Hello, world!");
 // }
 // greet();`,
-    // GoLang Hello World in comments
-    [GOLANG]: `// func greet() {
+  // GoLang Hello World in comments
+  [GOLANG]: `// func greet() {
 //  fmt.Println("Hello world!")
 // }
 // func main() {
 //  greet()
 // }`,
-    // Python Hello World in comments
-    [PYTHON]: `# def greet():
+  // Python Hello World in comments
+  [PYTHON]: `# def greet():
 #  print("Hello world!")
 # greet()`,
-    // Java 11 Hello World in comments
-    [JAVA11]: `/* 
+  // Java 11 Hello World in comments
+  [JAVA11]: `/* 
 public class Main {
     public static void main(String[] args) {
         greet();
@@ -36,13 +43,13 @@ public class Main {
     }
 }
 */`,
-    // Ruby Hello World in comments
-    [RUBY]: `# def greet
+  // Ruby Hello World in comments
+  [RUBY]: `# def greet
 #   puts "Hello, world!"
 # end
 # greet`,
-    // C++ Hello World in comments
-    [CPP]: `// #include <iostream>
+  // C++ Hello World in comments
+  [CPP]: `// #include <iostream>
 // using namespace std;
 //
 // void greet() {
@@ -52,5 +59,5 @@ public class Main {
 // int main() {
 //     greet();
 //     return 0;
-// }`
+// }`,
 };

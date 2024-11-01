@@ -6,7 +6,8 @@ import theme from "./theme.js";
 
 // Import JetBrains Mono from Google Fonts
 const link = document.createElement("link");
-link.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap";
+link.href =
+  "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap";
 link.rel = "stylesheet";
 document.head.appendChild(link);
 
@@ -15,5 +16,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

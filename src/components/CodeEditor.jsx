@@ -1,45 +1,19 @@
-import { useRef, useState, useEffect } from "react";
+import { React, useRef, useState } from "react";
 import { Box, HStack, Spinner, Button } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
 import LanguageSelector from "./LanguageSelector";
 import Output from "./Output";
-import { COMMENTS } from '../constants';
+import { COMMENTS } from "../constants";
 
 const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState(COMMENTS["javascript"]);
   const [language, setLanguage] = useState("javascript");
-  const [decorations, setDecorations] = useState([]); // Track decorations
   const [loading, setLoading] = useState(false); // Loading state for spinner
 
   const onMount = (editor) => {
     editorRef.current = editor;
     editor.focus();
-
-    // Add event listener for content changes
-    editor.onDidChangeModelContent((event) => {
-      const changes = event.changes;
-
-      // For each change, add a decoration (comment marker)
-      const newDecorations = changes.map((change) => ({
-        range: new monaco.Range(
-          change.range.startLineNumber,
-          1,
-          change.range.startLineNumber,
-          1
-        ),
-        options: {
-          isWholeLine: true,
-          glyphMarginClassName: "myDecoration",
-          hoverMessage: { value: "Line modified" }, // Comment message for hover
-        },
-      }));
-
-      // Update decorations
-      setDecorations((prev) => {
-        return editor.deltaDecorations(prev, newDecorations);
-      });
-    });
   };
 
   const onSelect = (language) => {
@@ -76,7 +50,12 @@ const CodeEditor = () => {
             onMount={onMount}
             onChange={(value) => setValue(value)}
           />
-          <Button mt={4} onClick={handleRunCode} colorScheme="teal" isDisabled={loading}>
+          <Button
+            mt={4}
+            onClick={handleRunCode}
+            colorScheme="teal"
+            isDisabled={loading}
+          >
             Run Code
           </Button>
         </Box>

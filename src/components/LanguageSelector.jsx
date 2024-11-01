@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Button,
@@ -8,9 +9,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { LANGUAGE_VERSIONS } from "../constants";
+import PropTypes from "prop-types";
 
 const languages = LANGUAGE_VERSIONS;
 const ACTIVE_COLOR = "blue.400";
+
+LanguageSelector.propTypes = {
+  language: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
+};
 
 const LanguageSelector = ({ language, onSelect }) => {
   return (
@@ -19,7 +26,9 @@ const LanguageSelector = ({ language, onSelect }) => {
         Language
       </Text>
       <Menu isLazy>
-        <MenuButton as={Button}><Text fontSize="md">{language}</Text></MenuButton>
+        <MenuButton as={Button}>
+          <Text fontSize="md">{language}</Text>
+        </MenuButton>
         <MenuList bg="#110c1b">
           {languages.map((lang) => (
             <MenuItem
